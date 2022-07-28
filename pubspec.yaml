@@ -38,6 +38,7 @@ dependencies:
   bloc: ^8.0.3
   equatable: ^2.0.3
   intl: any
+  http: any
 
 dev_dependencies:
   flutter_test:

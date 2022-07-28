@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class SearchTextField extends StatelessWidget {
 
   final String hint;
+  final TextEditingController controller;
 
-  const SearchTextField({Key? key, required this.hint}) : super(key: key);
+  const SearchTextField({Key? key, required this.hint, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,8 @@ class SearchTextField extends StatelessWidget {
 
       width: MediaQuery.of(context).size.width * 0.7,
 
-      child: TextField(
+      child: TextFormField(
+        controller: controller,
         cursorColor: Colors.white,
         style: const TextStyle(color: Colors.white),
         decoration: TextFieldDecoration(hint),

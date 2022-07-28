@@ -5,7 +5,7 @@ import 'package:weather/ui/pages/forecast_page/forecast_page.dart';
 import 'package:weather/ui/widgets/rounded_container.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage(BuildContext context, String text, {Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();

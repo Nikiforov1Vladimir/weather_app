@@ -15,6 +15,8 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
 
+  final TextEditingController _textController = TextEditingController();
+
   bool selected = false;
 
   Widget build(BuildContext context) {
@@ -22,38 +24,41 @@ class _SearchPageState extends State<SearchPage> {
 
       resizeToAvoidBottomInset: false,
 
-      body: SafeArea(
-        child: SizedBox(
+      body: Form(
+        child: SafeArea(
+          child: SizedBox(
 
-          width: double.infinity,
+            width: double.infinity,
 
-          child: Column(
+            child: Column(
 
-            crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
 
-            children: [
+              children: [
 
-              addVerticalSpace(MediaQuery.of(context).size.height * 0.06),
+                addVerticalSpace(MediaQuery.of(context).size.height * 0.06),
 
-              Text('Weather app',style: Theme.of(context).textTheme.headline1,),
+                Text('Weather app',style: Theme.of(context).textTheme.headline1,),
 
-              Lottie.asset(
-                  'assets/lotties/geo_lottie.json',
-                  repeat: false,
-                  height: MediaQuery.of(context).size.height * 0.3
-              ),
+                Lottie.asset(
+                    'assets/lotties/geo_lottie.json',
+                    repeat: false,
+                    height: MediaQuery.of(context).size.height * 0.3
+                ),
 
-              const SearchTextField(
-                hint: 'Введите название города',
-              ),
+                SearchTextField(
+                  hint: 'Enter city name',
+                  controller: _textController,
+                ),
 
-              addVerticalSpace(MediaQuery.of(context).size.height * 0.05),
+                addVerticalSpace(MediaQuery.of(context).size.height * 0.05),
 
-              AppMaterialButton(
-                  text: 'Подтвердить',
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder:(context) => const HomePage()))
-              ),
-            ],
+                AppMaterialButton(
+                    text: 'Confirm',
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder:(context) => HomePage(context, _textController.text)))
+                ),
+              ],
+            ),
           ),
         ),
       ),
